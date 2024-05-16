@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:test_tuqa_baker/shared/components/default_buttom.dart';
 import 'package:test_tuqa_baker/shared/styles/constant.dart';
 
 class ItemsScreen extends StatelessWidget {
@@ -38,7 +39,7 @@ class ItemsScreen extends StatelessWidget {
           ),
           itemCount: 10,
           scrollDirection: Axis.vertical,
-          itemBuilder: (context , index)=>const ItemCart()
+          itemBuilder: (context , index)=>ItemCart()
       ) ,
     );
 
@@ -46,8 +47,15 @@ class ItemsScreen extends StatelessWidget {
 }
 
 
-class ItemCart extends StatelessWidget{
-  const ItemCart({super.key});
+class ItemCart extends StatefulWidget{
+  ItemCart({super.key});
+
+  @override
+  State<ItemCart> createState() => _ItemCartState();
+}
+
+class _ItemCartState extends State<ItemCart> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) =>Container(
@@ -123,8 +131,92 @@ class ItemCart extends StatelessWidget{
                   borderRadius: BorderRadius.circular(15),
                    color: primaryColor,
                   ),
-                child: IconButton(onPressed: (){}, icon: Icon(Icons.add,color: Colors.white, size: 30,), ),
+                child: IconButton(
+                  onPressed: (){
+                    showBottomSheet(
+                        context: context,
+                        builder: (BuildContext context){
+                          return Container(
+                              color: Colors.grey[100],
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const Text(
+                                      'Add',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'Poppins',
+                                      ),),
+                                    IconButton(onPressed: (){}, icon:const Icon(Icons.close,size:30,))
 
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 15,),
+                                const Text(
+                                  'Name',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'Poppins',
+
+                                  ),
+
+                                ),
+                                const SizedBox(
+                                  height: 20,),
+                                const Text(
+                                  'Description',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'Poppins',
+
+                                  ),
+
+                                ),
+                                const SizedBox(
+                                  height: 20,),
+                                const Text(
+                                  'Price',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'Poppins',
+
+                                  ),
+
+                                ),
+                                const SizedBox(
+                                  height: 10,),
+                                Row(
+                                  children: [
+                                    const Text(
+                                      'Price',
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontFamily: 'Poppins',
+
+                                      ),
+
+                                    ),
+                                    IconButton(onPressed: (){}, icon:const Icon(Icons.keyboard_arrow_right))
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 10,),
+                                DefaultButton(text: 'Add Item',color: primaryColor,onPressed: (){},),
+
+
+                              ],
+                            ),
+
+                          );
+                        }
+                    );
+                    },
+                  icon:const Icon(Icons.add,color: Colors.white, size: 30,), ),
               )
             ]
 
@@ -133,6 +225,4 @@ class ItemCart extends StatelessWidget{
       ],
     ),
   );
-
-
 }
