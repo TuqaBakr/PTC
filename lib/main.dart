@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'layout/category_screen.dart';
 import 'layout/items_screen.dart';
-import 'layout/logo_screen.dart';
-import 'layout/my_cart_screen.dart';
-import 'layout/order_accepted_screen.dart';
-import 'layout/welcome_sceen.dart';
 
 void main() {
   runApp(const MyApp());
