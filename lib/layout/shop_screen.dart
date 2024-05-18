@@ -17,7 +17,7 @@ class ShopScreen extends StatelessWidget {
           itemCount: 20,
           scrollDirection: Axis.horizontal,
           itemBuilder: (context , index) {
-            return const CategoriesCart();
+            return const Text('lalal'); //CategoriesCart();
           }
       ),
     );

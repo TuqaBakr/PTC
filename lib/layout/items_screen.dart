@@ -11,16 +11,18 @@ class ItemsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(onPressed: (){},icon:const Icon(Icons.keyboard_arrow_left, size: 40,)), // Icon at the start
-          title:const Center(
-            child: Text('Beverages', style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 20,
-              fontFamily: 'Poppins'
-            ),),
-          ), // Text in the middle
+          title:const Text('Beverages', style: TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 20,
+            fontFamily: 'Poppins'
+          ),
+          ),
+        centerTitle: true,
+        leadingWidth: 50,// Text in the middle
           actions: [
             Container(
               margin:const EdgeInsets.only(right: 20),
+              padding: EdgeInsets.all(0),
               width: 40,
               height: 40,
               decoration: BoxDecoration(
@@ -64,7 +66,7 @@ class _ItemCartState extends State<ItemCart> {
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       border:Border.all(
-          width: 1,
+          width: 0.7,
           color:Colors.grey
       ),
     ),
@@ -77,9 +79,8 @@ class _ItemCartState extends State<ItemCart> {
           child: Center(
             child: Image.asset(
               'assets/images/cola1.png',
-              height: 100,
-              width: 70,
-              fit: BoxFit.fill,
+              height: 90,
+              width: 60,
             ),
           ),
         ),
@@ -128,7 +129,7 @@ class _ItemCartState extends State<ItemCart> {
               const SizedBox(width: 30,),
               Container(
                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(18),
                    color: primaryColor,
                   ),
                 child: IconButton(
@@ -137,76 +138,95 @@ class _ItemCartState extends State<ItemCart> {
                         context: context,
                         builder: (BuildContext context){
                           return Container(
-                              color: Colors.grey[100],
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFF2F3F2),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(16.0),
+                                  topRight: Radius.circular(16.0),
+                               ),
+                              ),
                             padding: const EdgeInsets.all(20.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Text(
-                                      'Add',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontFamily: 'Poppins',
-                                      ),),
-                                    IconButton(onPressed: (){}, icon:const Icon(Icons.close,size:30,))
+                                    const Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Add',
+                                          style: TextStyle(
+                                            fontSize: 19,
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.bold
+                                          ),),
+                                        SizedBox(
+                                          height: 20,),
+                                        Text(
+                                          'Name',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontFamily: 'Poppins',
+                                            fontSize: 18
 
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 15,),
-                                const Text(
-                                  'Name',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Poppins',
+                                          ),
 
-                                  ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,),
+                                        Text(
+                                          'Description',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontFamily: 'Poppins',
+                                            fontSize:18
 
-                                ),
-                                const SizedBox(
-                                  height: 20,),
-                                const Text(
-                                  'Description',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Poppins',
+                                          ),
 
-                                  ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,),
+                                        Text(
+                                          'Price',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontFamily: 'Poppins',
+                                            fontSize: 18
 
-                                ),
-                                const SizedBox(
-                                  height: 20,),
-                                const Text(
-                                  'Price',
-                                  style: TextStyle(
-                                    color: Colors.grey,
-                                    fontFamily: 'Poppins',
+                                          ),
 
-                                  ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,),
+                                        Text(
+                                          'Image',
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                            fontFamily: 'Poppins',
+                                            fontSize: 18
 
-                                ),
-                                const SizedBox(
-                                  height: 10,),
-                                Row(
-                                  children: [
-                                    const Text(
-                                      'Price',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontFamily: 'Poppins',
+                                          ),
 
-                                      ),
-
+                                        ),
+                                      ],
                                     ),
-                                    IconButton(onPressed: (){}, icon:const Icon(Icons.keyboard_arrow_right))
+                                    const SizedBox(width: 150,),
+                                    Column(
+                                      children: [
+                                        IconButton(onPressed: (){}, icon:const Icon(Icons.close,size:25,)),
+                                        const SizedBox(height: 150,),
+                                        IconButton(onPressed: (){}, icon:const Icon(Icons.keyboard_arrow_right))
+                                      ],
+                                    ),
                                   ],
                                 ),
                                 const SizedBox(
-                                  height: 10,),
-                                DefaultButton(text: 'Add Item',color: primaryColor,onPressed: (){},),
+                                  height: 30,),
+                                DefaultButton(
+                                  text: 'Add Item',
+                                  color: primaryColor,
+                                  onPressed: (){},),
 
 
                               ],
@@ -216,7 +236,12 @@ class _ItemCartState extends State<ItemCart> {
                         }
                     );
                     },
-                  icon:const Icon(Icons.add,color: Colors.white, size: 30,), ),
+                  icon:const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                ),
               )
             ]
 

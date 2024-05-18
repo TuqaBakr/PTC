@@ -44,7 +44,7 @@ class OrderAcceptedScreen extends StatelessWidget{
             ),
             Container(
               height:65,
-              width:320,
+              width:300,
               decoration:BoxDecoration(
                 color:primaryColor,
                 borderRadius:BorderRadius.circular(15),
@@ -61,10 +61,9 @@ class OrderAcceptedScreen extends StatelessWidget{
             ),
             Container(
               height:70,
-              width:350,
+              width:300,
               decoration:const BoxDecoration(
                 color:Colors.white,
-
               ),
               child:const Center(
                 child: Text("Back to home",

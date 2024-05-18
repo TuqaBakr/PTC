@@ -11,10 +11,11 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.only(top: 5),
+      width: double.infinity-40,
+      height: 60,
+      margin: const EdgeInsets.only(top: 5,right: 15, left: 15),
       child: MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         padding: const EdgeInsets.symmetric(vertical: 13),
         onPressed: onPressed,
         color: color,
